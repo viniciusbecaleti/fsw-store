@@ -12,6 +12,7 @@ import AutenticationButton from "../AutenticationButton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Profile from "./profile";
+import SignOutButton from "../SignOutButton";
 
 const Header = async () => {
   const session = await getServerSession(authOptions);
@@ -44,6 +45,8 @@ const Header = async () => {
             <Button variant="outline" className="w-full justify-start gap-3">
               <ListOrderedIcon size={16} /> Catálogo
             </Button>
+
+            {session && <SignOutButton />}
           </div>
         </SheetContent>
       </Sheet>

@@ -11,44 +11,40 @@ datasource db {
 }
 
 model Category {
-  id        String @id @default(uuid())
-  name      String
-  slug      String @unique
-  image_url String
+  id       String @id @default(uuid())
+  name     String
+  slug     String @unique
+  imageUrl String
 
   products Product[]
-
-  @@map("categories")
 }
 
 model Product {
-  id          String  @id @default(uuid())
-  name        String
-  slug        String  @unique
-  image_urls  String
-  description String
-  base_price  Decimal @db.Decimal(8, 2)
-  discount    Int     @default(0)
+  id                 String   @id @default(uuid())
+  name               String
+  slug               String   @unique
+  imageUrls          String[]
+  description        String
+  basePrice          Decimal  @db.Decimal(8, 2)
+  discountPercentage Int      @default(0)
 
-  category_id String
-  category    Category @relation(fields: [category_id], references: [id])
-
-  @@map("products")
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

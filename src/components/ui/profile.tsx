@@ -7,11 +7,15 @@ interface ProfileProps {
 }
 
 const Profile = async ({ session }: ProfileProps) => {
+  if (!session.user) {
+    return;
+  }
+
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2 py-4">
         <Avatar>
-          {session?.user?.image && <AvatarImage src={session.user.image} />}
+          {session.user.image && <AvatarImage src={session.user.image} />}
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
 

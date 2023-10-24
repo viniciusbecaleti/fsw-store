@@ -12,7 +12,7 @@ const SignOutButton = () => {
   return (
     <Button
       onClick={handleLogOut}
-      variant="outline"
+      variant="destructive"
       className="w-full justify-start gap-3"
     >
       <LogOutIcon size={16} /> Sair
