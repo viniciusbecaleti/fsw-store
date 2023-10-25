@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { Categories } from "./components/Categories";
+
 export default async function Home() {
   return (
     <div className="p-5">
@@ -11,6 +13,10 @@ export default async function Home() {
         sizes="100vw"
         className="h-auto w-full"
       />
+
+      <div className="mt-8">
+        <Categories />
+      </div>
     </div>
   );
 }
